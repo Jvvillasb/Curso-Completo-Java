@@ -80,13 +80,13 @@ int soma = valor1 + valor2; // Terceira instrução
 
 ### Tipos Primitivos
 
-**int**: Números inteiros (-2³¹ a 2³¹-1)
-**double**: Números decimais
-**boolean**: Valores lógicos (true/false)
-**char**: Caractere único
-**byte**: Números inteiros pequenos
-**long**: Inteiros de maior precisão
-**float**: Números decimais de precisão simples
+- **int**: Números inteiros (-2³¹ a 2³¹-1)
+- **double**: Números decimais
+- **boolean**: Valores lógicos (true/false)
+- **char**: Caractere único
+- **byte**: Números inteiros pequenos
+- **long**: Inteiros de maior precisão
+- **float**: Números decimais de precisão simples
 
 ### Declaração
 
@@ -101,26 +101,26 @@ char letra = 'A';
 
 ## Aritméticos
 
-+: Adição
--: Subtração
-*: Multiplicação
-/: Divisão
-%: Módulo (resto)
+- +: Adição
+- -: Subtração
+- *: Multiplicação
+- /: Divisão
+- %: Módulo (resto)
 
-## sssRelacionais
+## Relacionais
 
-==: Igual
-!=: Diferente
->: Maior
-<: Menor
->=: Maior ou igual
-<=: Menor ou igual
+- ==: Igual
+- !=: Diferente
+- >: Maior
+- <: Menor
+- >=: Maior ou igual
+- <=: Menor ou igual
 
 ## Lógicos
 
-&&: E (AND)
-||: OU (OR)
-!: Negação (NOT)
+- &&: E (AND)
+- ||: OU (OR)
+- !: Negação (NOT)
 
 ## Exemplo
 
