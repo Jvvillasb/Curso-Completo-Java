@@ -111,9 +111,9 @@ char letra = 'A';
 
 - ==: Igual
 - !=: Diferente
-- >: Maior
+- ">: Maior
 - <: Menor
-- >=: Maior ou igual
+- ">=: Maior ou igual
 - <=: Menor ou igual
 
 ## Lógicos
