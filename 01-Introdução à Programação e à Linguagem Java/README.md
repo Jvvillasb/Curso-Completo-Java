@@ -1,27 +1,143 @@
-# Projeto: Curso Udemy - Arquitetura de Microsserviços: Padrão Saga Orquestrado
+### 01-Introdução à Programação e à Linguagem Java
 
-Repositório contendo o projeto desenvolvido do curso Arquitetura de Microsserviços: Padrão Saga Orquestrado, ministrado por mim para a plataforma 
-**Udemy**.
+## 1. Definição
+Programação é a arte de criar instruções precisas para que computadores resolvam problemas específicos. Envolve:
 
-Para acessar o curso na plataforma, basta acessar esta URL: https://www.udemy.com/course/arquitetura-de-microsservicos-padrao-saga-orquestrado/
+- **Análise de problemas**
+- **Criação de algoritmos**
+- **Implementação de soluções**
+- **Depuração e otimização de código**
 
-![Arquitetura](Conte%C3%BAdos/Imagem%20Curso.png)
+### Conceitos Fundamentais
+- **Algoritmo**: Sequência lógica de passos para resolver um problema.
+- **Lógica de Programação**: Técnica de encadear pensamentos para atingir um objetivo.
+- **Abstração**: Capacidade de simplificar problemas complexos.
 
-### Sumário:
+## 2. Configuração do Ambiente de Desenvolvimento
 
-* [Tecnologias](#tecnologias)
-* [Ferramentas utilizadas](#ferramentas-utilizadas)
-* [Arquitetura Proposta](#arquitetura-proposta)
-* [Execução do projeto](#execu%C3%A7%C3%A3o-do-projeto)
-  * [01 - Execução geral via docker-compose](#01---execu%C3%A7%C3%A3o-geral-via-docker-compose)
-  * [02 - Execução geral via automação com script em Python](#02---execu%C3%A7%C3%A3o-geral-via-automa%C3%A7%C3%A3o-com-script-em-python)
-  * [03 - Executando os serviços de bancos de dados e Message Broker](#03---executando-os-servi%C3%A7os-de-bancos-de-dados-e-message-broker)
-  * [04 - Executando manualmente via CLI](#04---executando-manualmente-via-cli)
-* [Acessando a aplicação](#acessando-a-aplica%C3%A7%C3%A3o)
-* [Acessando tópicos com Redpanda Console](#acessando-t%C3%B3picos-com-redpanda-console)
-* [Dados da API](#dados-da-api)
-  * [Produtos registrados e seu estoque](#produtos-registrados-e-seu-estoque)
-  * [Endpoint para iniciar a saga](#endpoint-para-iniciar-a-saga)
-  * [Endpoint para visualizar a saga](#endpoint-para-visualizar-a-saga)
-  * [Acesso ao MongoDB](#acesso-ao-mongodb)
+### Componentes Necessários
 
+#### JDK (Java Development Kit)
+- Conjunto de ferramentas para desenvolvimento Java.
+- Inclui compilador, máquina virtual e bibliotecas.
+- **Versões mais utilizadas**: JDK 8, 11, 17 (LTS).
+
+#### IDEs Populares
+- **Eclipse**: Gratuita, multiplataforma.
+- **IntelliJ IDEA**: Recursos avançados.
+- **NetBeans**: Fácil utilização.
+- **Visual Studio Code**: Leve, extensível.
+
+### Passos de Configuração
+1. Baixar o **JDK oficial**.
+2. Configurar **variáveis de ambiente**.
+3. Instalar a **IDE**.
+4. Testar a instalação.
+
+## 3. História do Java
+
+### Origem
+- **Criação**: 1995 por James Gosling na Sun Microsystems.
+- **Objetivo Original**: Desenvolver software para dispositivos eletrônicos.
+
+#### Características Diferenciais
+- Portabilidade.
+- Orientação a objetos.
+- Sintaxe similar a C++.
+- Gerenciamento automático de memória.
+
+### Evolução
+- **1995**: Primeira versão pública.
+- **2010**: Comprada pela Oracle.
+- Atualizações constantes com novas features.
+- Amplamente usado em desenvolvimento corporativo.
+
+## 4. Sintaxe Básica de Java
+
+### Estrutura de um Programa
+```java
+{
+  "products": [
+    {
+      "product": {
+        "code": "COMIC_BOOKS",
+        "unitValue": 15.50
+      },
+      "quantity": 3
+    },
+    {
+      "product": {
+        "code": "BOOKS",
+        "unitValue": 9.90
+      },
+      "quantity": 1
+    }
+  ]
+}
+```
+## 5. Estrutura Sequencial
+
+### Execução Linear
+
+- Instruções executadas na ordem definida
+- Cada linha é processada sequencialmente
+- Fluxo de cima para baixo
+
+```java
+int valor1 = 10; // Primeira instrução
+int valor2 = 20; // Segunda instrução
+int soma = valor1 + valor2; // Terceira instrução
+```
+
+## 6. Variáveis e Tipos de Dados
+
+### Tipos Primitivos
+
+**int**: Números inteiros (-2³¹ a 2³¹-1)
+**double**: Números decimais
+**boolean**: Valores lógicos (true/false)
+**char**: Caractere único
+**byte**: Números inteiros pequenos
+**long**: Inteiros de maior precisão
+**float**: Números decimais de precisão simples
+
+### Declaração
+
+```java
+int idade = 25;
+double salario = 1500.50;
+boolean ativo = true;
+char letra = 'A';
+```
+
+## 7. Operadores
+
+## Aritméticos
+
++: Adição
+-: Subtração
+*: Multiplicação
+/: Divisão
+%: Módulo (resto)
+
+## sssRelacionais
+
+==: Igual
+!=: Diferente
+>: Maior
+<: Menor
+>=: Maior ou igual
+<=: Menor ou igual
+
+## Lógicos
+
+&&: E (AND)
+||: OU (OR)
+!: Negação (NOT)
+
+## Exemplo
+
+```java
+int x = 10, y = 5;
+boolean resultado = (x > y) && (x != 0);
+```
