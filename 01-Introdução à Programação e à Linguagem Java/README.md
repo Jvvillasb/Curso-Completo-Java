@@ -56,23 +56,10 @@ Programação é a arte de criar instruções precisas para que computadores res
 
 ### Estrutura de um Programa
 ```java
-{
-  "products": [
-    {
-      "product": {
-        "code": "COMIC_BOOKS",
-        "unitValue": 15.50
-      },
-      "quantity": 3
-    },
-    {
-      "product": {
-        "code": "BOOKS",
-        "unitValue": 9.90
-      },
-      "quantity": 1
+public class NomeClasse {
+    public static void main(String[] args) {
+        // Código executável
     }
-  ]
 }
 ```
 ## 5. Estrutura Sequencial
