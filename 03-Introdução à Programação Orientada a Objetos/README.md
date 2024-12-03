@@ -107,7 +107,7 @@ class Cachorro extends Animal {
 
 ## 6.Polimorfismo
 
-### Polimorfismo: Permite que métodos com o mesmo nome tenham diferentes implementações.sssssssssss
+### Polimorfismo: Permite que métodos com o mesmo nome tenham diferentes implementações.
 
 ```java
 class Animal {
