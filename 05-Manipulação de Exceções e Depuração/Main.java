@@ -15,9 +15,9 @@ class CadastroIncompletoException extends RuntimeException {
     }
 }
 
-public class GerenciadorCadastro {
+public class Main {
     // Logger para registrar eventos e erros
-    private static final Logger LOGGER = Logger.getLogger(GerenciadorCadastro.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     // Método para validar idade
     public void validarIdade(int idade) throws IdadeInvalidaException {
@@ -79,7 +79,7 @@ public class GerenciadorCadastro {
     }
 
     public static void main(String[] args) {
-        GerenciadorCadastro gerenciador = new GerenciadorCadastro();
+        Main gerenciador = new Main();
         
         // Cenário 1: Cadastro bem-sucedido
         System.out.println("--- Cenário 1: Cadastro Válido ---");
