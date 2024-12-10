@@ -18,107 +18,117 @@ Somador somador = (a, b) -> a + b;
 System.out.println("Resultado da soma: " + somador.somar(5, 3));
 ```
 
-## 2. Manipulação de Dados com java.nio
+## 2. Interfaces Funcionais
 
-- A API **java.nio** fornece mais eficiência para manipulação de arquivos e dados com classes como **Paths, Files, e ByteBuffer**.
-Exemplos:
-- **Paths.get()**: Cria um caminho para um arquivo ou diretório.
-- **Files.readAllLines()**: Lê todas as linhas de um arquivo.
-- **Files.write()**: Escreve dados em um arquivo.
+- Uma interface funcional é aquela que possui apenas um método abstrato. Exemplos incluem **Runnable**, **Callable** e interfaces da API **java.util.function.**
 
 ```java
-import java.nio.file.*;
+// Interface funcional personalizada
+@FunctionalInterface
+interface Calculador {
+    int calcular(int x, int y);
+}
+
+// Usando a interface funcional com Lambda
+Calculador multiplicador = (x, y) -> x * y;
+System.out.println("Multiplicação: " + multiplicador.calcular(4, 5));
+```
+Interfaces funcionais comuns no Java:
+
+- **Predicate<T>**: Retorna um booleano.
+- **Function<T, R>**: Transforma um valor de tipo T em tipo R.
+- **Consumer<T>**: Executa uma ação com um argumento T.
+
+
+## 3. Stream API e Operações Funcionais (Map, Filter, Reduce)
+
+- A API de Streams permite processar coleções de forma funcional e declarativa.
+
+```java
 import java.util.*;
+import java.util.stream.*;
 
-// Escrever em um arquivo usando java.nio
-Path path = Paths.get("nio_example.txt");
-List<String> lines = Arrays.asList("Linha 1 com NIO", "Linha 2 com NIO");
-try {
-    Files.write(path, lines);
-    System.out.println("Arquivo escrito com sucesso!");
-} catch (IOException e) {
-    System.err.println("Erro ao escrever arquivo: " + e.getMessage());
-}
+// Exemplo com map e filter
+List<String> nomes = Arrays.asList("Alice", "Bob", "Charlie", "David");
+List<String> nomesFiltrados = nomes.stream()
+    .filter(nome -> nome.startsWith("A")) // Filtra nomes que começam com "A"
+    .map(String::toUpperCase)            // Transforma em maiúsculas
+    .collect(Collectors.toList());
+System.out.println("Nomes filtrados: " + nomesFiltrados);
 
-// Ler o conteúdo de um arquivo com java.nio
-try {
-    List<String> readLines = Files.readAllLines(path);
-    readLines.forEach(line -> System.out.println("Conteúdo: " + line));
-} catch (IOException e) {
-    System.err.println("Erro ao ler arquivo: " + e.getMessage());
-}
+// Reduzindo uma lista de números para calcular a soma
+List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
+int soma = numeros.stream()
+    .reduce(0, Integer::sum);
+System.out.println("Soma dos números: " + soma);
 ```
 
-## 3. Serialização e Desserialização
+## 4. Manipulação e Transformação de Dados com Streams
 
-- **Serialização**: Processo de converter um objeto em uma sequência de bytes para armazenamento ou transmissão.
-- **Desserialização**: Processo inverso, convertendo bytes em um objeto.
-- **Classes relacionadas**:
-- **ObjectOutputStream**: Serializa objetos para um fluxo.
-- **ObjectInputStream**: Desserializa objetos de um fluxo.
-- Objetos devem implementar a interface **Serializable.**
+- A manipulação com Streams é útil para transformar coleções em listas, mapas ou realizar operações complexas.
 
 ```java
-import java.io.*;
+// Convertendo uma lista de Strings para uma lista de inteiros
+List<String> strings = Arrays.asList("1", "2", "3", "4");
+List<Integer> inteiros = strings.stream()
+    .map(Integer::valueOf) // Converte cada String para Integer
+    .collect(Collectors.toList());
+System.out.println("Inteiros: " + inteiros);
 
-// Classe serializável
-class Person implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private String name;
-    private int age;
+// Agrupando dados
+List<String> items = Arrays.asList("banana", "maçã", "uva", "banana", "maçã");
+Map<String, Long> contagem = items.stream()
+    .collect(Collectors.groupingBy(item -> item, Collectors.counting()));
+System.out.println("Contagem de itens: " + contagem);
+```
 
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
+## 5. Programação Reativa (Introdução ao Flow API)
+
+- A **Flow API** (introduzida no Java 9) implementa um modelo de programação reativa baseado no padrão Publisher-Subscriber. Ela é útil para lidar com fluxos de dados assíncronos.
+
+```java
+import java.util.concurrent.*;
+import java.util.concurrent.Flow.*;
+
+// Publisher simples
+class SimplePublisher implements Publisher<String> {
+    private final String[] data = {"Dado 1", "Dado 2", "Dado 3"};
+
+    @Override
+    public void subscribe(Subscriber<? super String> subscriber) {
+        for (String item : data) {
+            subscriber.onNext(item); // Envia dados
+        }
+        subscriber.onComplete(); // Finaliza
+    }
+}
+
+// Subscriber simples
+class SimpleSubscriber implements Subscriber<String> {
+    @Override
+    public void onSubscribe(Subscription subscription) {
+        System.out.println("Inscrito com sucesso!");
     }
 
     @Override
-    public String toString() {
-        return "Person{name='" + name + "', age=" + age + '}';
+    public void onNext(String item) {
+        System.out.println("Recebido: " + item);
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+        System.err.println("Erro: " + throwable.getMessage());
+    }
+
+    @Override
+    public void onComplete() {
+        System.out.println("Processamento completo.");
     }
 }
 
-// Serializar um objeto
-Person person = new Person("Alice", 25);
-try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("person.ser"))) {
-    oos.writeObject(person);
-    System.out.println("Objeto serializado: " + person);
-} catch (IOException e) {
-    System.err.println("Erro na serialização: " + e.getMessage());
-}
-
-// Desserializar o objeto
-try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("person.ser"))) {
-    Person deserializedPerson = (Person) ois.readObject();
-    System.out.println("Objeto desserializado: " + deserializedPerson);
-} catch (IOException | ClassNotFoundException e) {
-    System.err.println("Erro na desserialização: " + e.getMessage());
-}
+// Usando Flow API
+SimplePublisher publisher = new SimplePublisher();
+SimpleSubscriber subscriber = new SimpleSubscriber();
+publisher.subscribe(subscriber);
 ```
 
-## 4. Leitura e Escrita de Arquivos
-
-- **Métodos comuns:**
-- Leitura linha por linha com **BufferedReader**.
-- Escrita com **BufferedWriter**.
-- Manipulação eficiente com **java.nio.file.Files.**
-
-
-```java
-// Leitura e escrita simples com java.io
-File simpleFile = new File("simple.txt");
-try (BufferedWriter writer = new BufferedWriter(new FileWriter(simpleFile))) {
-    writer.write("Exemplo de escrita simples.");
-} catch (IOException e) {
-    System.err.println("Erro ao escrever no arquivo: " + e.getMessage());
-}
-
-try (BufferedReader reader = new BufferedReader(new FileReader(simpleFile))) {
-    String content;
-    while ((content = reader.readLine()) != null) {
-        System.out.println("Lido: " + content);
-    }
-} catch (IOException e) {
-    System.err.println("Erro ao ler o arquivo: " + e.getMessage());
-}
-```
