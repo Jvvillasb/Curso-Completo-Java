@@ -163,5 +163,5 @@ spring.datasource.url=jdbc:mysql://localhost:3306/mydatabase
 spring.datasource.username=root
 spring.datasource.password=root
 spring.datasource.hikari.maximum-pool-size=10
-spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.ddl-auto=update 
 ```

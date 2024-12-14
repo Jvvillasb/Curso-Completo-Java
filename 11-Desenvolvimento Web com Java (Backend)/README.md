@@ -102,7 +102,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 @Tag(name = "Exemplo API", description = "Exemplo de documentação com Swagger")
 public class ExampleController {
 
-    @Operation(summary = "Buscar mensagem de exemplo")
+    @Operation(summary = "Buscar mensagem de exemplo") 
     @GetMapping("/example")
     public String getExample() {
         return "Exemplo de documentação com Swagger!";
