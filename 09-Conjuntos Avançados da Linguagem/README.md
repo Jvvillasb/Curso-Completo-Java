@@ -42,7 +42,7 @@ public class TesteReflection {
 }
 ```
 
-## 3. Uso de Optiona
+## 3. Uso de Optional
 
 - A classe **Optional** reduz a necessidade de verificações de **null**, tornando o código mais seguro e legível.
 
