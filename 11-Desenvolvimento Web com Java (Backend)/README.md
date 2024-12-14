@@ -1,7 +1,5 @@
 ### 11-Desenvolvimento Web com Java (Backend)
 
-- ***OBS:*** Não Tem trecho de código nesse Exemplo, mas todas referências são do Arquivo **ThreadsAndParallelism.java** desse módulo
-
 ## 1. Fundamentos de Web Services
 
 - Web Services permitem a comunicação entre aplicações através da web, utilizando protocolos como HTTP. Existem dois tipos principais:
